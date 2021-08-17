@@ -15,12 +15,41 @@
 # Time: O(log n)
 # Space: O(log n)
 
+def binary_search_rec(a, key, low, high)
 # At every step, consider the array between low and high indices
+# When low is greater than high, the key doesn’t exist and -1 is returned.
+  if low > high
+    return -1
+  end
+
+
 # Calculate the mid index.
+  mid = low + ((high - low) / 2)
+
 # If the element at the mid index is the key, return mid.
+  if a[mid] == key
+    return mid
+
 # If the element at mid is greater than the key, then change the index high to mid - 1.
 # The index at low remains the same.
+  elsif key < a[mid]
+    return binary_search_rec(a, key, low, mid - 1)
+  else
 # If the element at mid is less than the key, then change low to mid + 1. The index at high remains the same.
-# When low is greater than high, the key doesn’t exist and -1 is returned.
+    return binary_search_rec(a, key, mid + 1, high)
+  end
+end
 
+# Initial formula, passing arguments, including low (0) and high (a.length - 1)
+def binary_search(a, key)
+  return binary_search_rec(a, key, 0, a.length - 1)
+end
 
+# Testing sample key inputs against provided array 
+arr = [1, 10, 20, 47, 59, 63, 75, 88, 99, 107, 120, 133, 155, 162, 176, 188, 199, 200, 210, 222]
+inputs = [10, 49, 99, 110, 176]
+
+# Iterate through the sample key inputs to puts method_name(arr, input) = index for each input, returns -1 for elements not included in arr
+for i in 0..inputs.length-1
+  puts "binary_search(arr, " + (inputs[i]).to_s+ ") = " +  (binary_search(arr, inputs[i]).to_s)
+end
