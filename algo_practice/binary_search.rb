@@ -53,3 +53,49 @@ inputs = [10, 49, 99, 110, 176]
 for i in 0..inputs.length-1
   puts "binary_search(arr, " + (inputs[i]).to_s+ ") = " +  (binary_search(arr, inputs[i]).to_s)
 end
+
+
+# Iterative Solution
+# Time: O(log n)
+# Space: O(1)
+# Similar to recursive but better space complexity as low/high indices are calculated during each step and not repassed to the method
+
+def binary_search(a, key)
+# At every step, consider the array between low and high indices
+# Define initial low and high indices 
+  low = 0
+  high = a.length - 1
+
+
+# If low value is less or equal to high value, calculate the mid index.
+  while low <= high
+    mid = low + ((high - low) / 2)
+
+# If the element at the mid index is the key, return mid.
+    if a[mid] == key
+      return mid
+    end
+
+# If the element at mid is greater than the key, then change the index high to mid - 1.
+# The index at low remains the same.
+    if key < a[mid]
+      high = mid - 1
+
+# If the element at mid is less than the key, then change low to mid + 1. The index at high remains the same.
+    else
+      low = mid + 1
+    end
+  end
+
+# Through interations, the low indice will be larger than the high indice if the key doesn’t exist, so -1 is returned.
+  return -1
+end
+
+# Testing sample key inputs against provided array
+arr = [1, 10, 20, 47, 59, 63, 75, 88, 99, 107, 120, 133, 155, 162, 176, 188, 199, 200, 210, 222]
+inputs = [10, 49, 99, 110, 176]
+
+# Iterate through the sample key inputs to puts method_name(arr, input) = index for each input, returns -1 for elements not included in arr
+for i in 0..inputs.length-1
+  puts "binary_search(arr, " + (inputs[i]).to_s+ ") = " +  (binary_search(arr, inputs[i]).to_s)
+end
