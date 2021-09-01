@@ -26,7 +26,7 @@
 # keep track of current string and 
 # continue to add a char at each step until dict includes word 
 
-# Time Complexity: 
+# Time Complexity: O(n) ?
 # Space Complexity: 
 
 def valid_sentence(string, dictionary)

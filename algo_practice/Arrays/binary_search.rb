@@ -1,5 +1,6 @@
 # QUESTION:
-# Given a sorted array of integers, return the index of the given key. Return -1 if the key is not found.
+# Given a sorted array of integers, return the index of the given key. 
+# Return -1 if the key is not found.
 
 # Use the divide and conquer strategy
 # Examples:

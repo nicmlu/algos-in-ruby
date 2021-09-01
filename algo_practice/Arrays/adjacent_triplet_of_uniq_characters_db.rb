@@ -31,6 +31,15 @@ Guaranteed constraints:
 The number of indices i in s, such that characters s[i], s[i + 1], and s[i + 2] all exist and are pairwise distinct.
 =end
 
+# Pseudocode
+# if string has less than 3 char, return 0 
+# iterate through each char in the string 
+# once 3 char are identified, see if they are unique
+# if distinct, increment distinct_sets count by 1, increase index by 1 
+# if not distinct, DONT increment distinct_set count, increase index by 1 
+# return distinct_sets count 
+
+
 #Solution
 def threeCharsDistinct(s)
     distinct_sets = 0 
@@ -39,15 +48,29 @@ def threeCharsDistinct(s)
         return distinct_sets
     end 
 
-    
+    sub_strings = s.split(//)
 
-    # find out if first set of 3 has duplicates 
-     #str.each do |set|
-       # if set.uniq!
-            distinct_sets += 1
-        #end
-    #end 
-     #return distinct_sets
+    # is_valid = "False" 
+    # input_string = string.downcase 
+    curr_string = []
+    temp_string = []
+
+    s.each_char do |char|
+        if curr_string.length == 3
+            curr_string == curr_string.uniq ? 
+        elsif  
+            curr_string.length < 3
+            curr_string = temp_string.push(char)
+            
+
+            temp_string = curr_string
+            is_valid = "False" 
+        end 
+    end 
+    return is_valid 
+
+
+    
 end 
 
 
